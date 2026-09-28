@@ -1,0 +1,4 @@
+interface:
+  display_name: "Soya UI"
+  short_description: "Build accessible Svelte apps with Soya UI components"
+  default_prompt: "Use $soya-ui to build this Svelte app with the public Soya UI package and its documented patterns."
