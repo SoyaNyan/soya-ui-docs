@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["/soya-ui-docs/_app/immutable/chunks/BDhWHrEw.js","/soya-ui-docs/_app/immutable/chunks/fs03ZRsb.js"])))=>i.map(i=>d[i]);
-import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,St as u,Z as d,a as f,at as p,ct as m,et as h,ft as g,h as _,jt as v,kt as y,l as b,mt as x,n as S,ot as C,rt as w,s as T,st as E,tt as D,ut as O,w as k,z as A}from"../chunks/fs03ZRsb.js";import{t as j}from"../chunks/HclGiUj8.js";import"../chunks/xihTtKlq.js";import{t as M}from"../chunks/CyyqgG46.js";import{n as N}from"../chunks/qGf02Wcn.js";import{t as P}from"../chunks/RhlqY4Vh.js";import{t as F}from"../chunks/CqGZGrQU.js";import{t as I}from"../chunks/GAwXwUEF.js";import{t as L}from"../chunks/CA_S8_pu.js";import{t as R}from"../chunks/CzDrjlpH.js";import{t as z}from"../chunks/CHdpLLp6.js";import{t as B}from"../chunks/Ciq4j09H.js";import{t as V}from"../chunks/cDqDzzXG.js";import{t as H}from"../chunks/BsZeVic5.js";import{a as U,o as W}from"../chunks/Dw-uS0_2.js";import{n as G}from"../chunks/odDRjDlP.js";import{n as K,t as q}from"../chunks/CsI9XhIz.js";import{t as J}from"../chunks/DKEbhgvo.js";import{t as Y}from"../chunks/CTwFwLc1.js";var X=c({entries:()=>Z,load:()=>ee}),ee=({params:e})=>(W.some(t=>t.slug===e.slug)||J(404,`Recipe not found.`),{slug:e.slug});function Z(){return W.map(({slug:e})=>({slug:e}))}var Q={"date-picker":{ko:`<script lang="ts">
-  import { Button, Calendar, Popover } from 'soya-ui';
+import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,St as u,Z as d,a as f,at as p,ct as m,et as h,ft as g,h as _,jt as v,kt as y,l as b,mt as x,n as S,ot as C,rt as w,s as T,st as E,tt as D,ut as O,w as k,z as A}from"../chunks/fs03ZRsb.js";import{t as j}from"../chunks/HclGiUj8.js";import"../chunks/xihTtKlq.js";import{t as M}from"../chunks/CyyqgG46.js";import{n as N}from"../chunks/qGf02Wcn.js";import{t as P}from"../chunks/RhlqY4Vh.js";import{t as F}from"../chunks/CqGZGrQU.js";import{t as I}from"../chunks/GAwXwUEF.js";import{t as L}from"../chunks/CA_S8_pu.js";import{t as R}from"../chunks/CzDrjlpH.js";import{t as z}from"../chunks/CHdpLLp6.js";import{t as B}from"../chunks/Ciq4j09H.js";import{t as V}from"../chunks/cDqDzzXG.js";import{t as H}from"../chunks/BsZeVic5.js";import{a as U,o as W}from"../chunks/BeH0e_SO.js";import{n as G}from"../chunks/odDRjDlP.js";import{n as K,t as ee}from"../chunks/CsI9XhIz.js";import{t as te}from"../chunks/D9vv24VK.js";import{t as q}from"../chunks/Bg3D4YM6.js";var J=c({entries:()=>X,load:()=>Y}),Y=({params:e})=>(W.some(t=>t.slug===e.slug)||te(404,`Recipe not found.`),{slug:e.slug});function X(){return W.map(({slug:e})=>({slug:e}))}var Z={"date-picker":{ko:`<script lang="ts">
+  import { Button, Calendar, CodeBlock, Popover } from 'soya-ui';
   import type { CalendarValue } from 'soya-ui';
 
   let open = $state(false);
@@ -14,43 +14,31 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
         }).format(value)
       : '날짜를 선택하세요',
   );
+  let stateJson = $derived(JSON.stringify({ open, selectedDate: formatted }, null, 2));
 <\/script>
 
-<div class="date-picker-recipe">
-  <Popover bind:open align="start">
-    {#snippet trigger(props)}
-      <Button {...props} variant="secondary" aria-label={'날짜 선택'}>
-        {formatted}
-      </Button>
-    {/snippet}
-    <Calendar
-      mode="single"
-      bind:value
-      locale={'ko-KR'}
-      label={'예약 날짜'}
-      previousMonthLabel={'이전 달'}
-      nextMonthLabel={'다음 달'}
-      onvaluechange={(next) => {
-        if (next instanceof Date) open = false;
-      }}
-    />
-  </Popover>
-  <small aria-live="polite">{'선택한 날짜'}: {formatted}</small>
-</div>
+<Popover bind:open align="start">
+  {#snippet trigger(props)}
+    <Button {...props} variant="secondary" aria-label={'날짜 선택'}>
+      {formatted}
+    </Button>
+  {/snippet}
+  <Calendar
+    mode="single"
+    bind:value
+    locale={'ko-KR'}
+    label={'예약 날짜'}
+    previousMonthLabel={'이전 달'}
+    nextMonthLabel={'다음 달'}
+    onvaluechange={(next) => {
+      if (next instanceof Date) open = false;
+    }}
+  />
+</Popover>
 
-<style lang="scss">
-  .date-picker-recipe {
-    display: grid;
-    justify-items: start;
-    gap: var(--soya-space-3);
-    min-inline-size: 0;
-  }
-  .date-picker-recipe small {
-    color: var(--soya-text-secondary);
-  }
-</style>
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
 `,en:`<script lang="ts">
-  import { Button, Calendar, Popover } from 'soya-ui';
+  import { Button, Calendar, CodeBlock, Popover } from 'soya-ui';
   import type { CalendarValue } from 'soya-ui';
 
   let open = $state(false);
@@ -64,43 +52,31 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
         }).format(value)
       : 'Choose a date',
   );
+  let stateJson = $derived(JSON.stringify({ open, selectedDate: formatted }, null, 2));
 <\/script>
 
-<div class="date-picker-recipe">
-  <Popover bind:open align="start">
-    {#snippet trigger(props)}
-      <Button {...props} variant="secondary" aria-label={'Choose date'}>
-        {formatted}
-      </Button>
-    {/snippet}
-    <Calendar
-      mode="single"
-      bind:value
-      locale={'en-US'}
-      label={'Reservation date'}
-      previousMonthLabel={'Previous month'}
-      nextMonthLabel={'Next month'}
-      onvaluechange={(next) => {
-        if (next instanceof Date) open = false;
-      }}
-    />
-  </Popover>
-  <small aria-live="polite">{'Selected date'}: {formatted}</small>
-</div>
+<Popover bind:open align="start">
+  {#snippet trigger(props)}
+    <Button {...props} variant="secondary" aria-label={'Choose date'}>
+      {formatted}
+    </Button>
+  {/snippet}
+  <Calendar
+    mode="single"
+    bind:value
+    locale={'en-US'}
+    label={'Reservation date'}
+    previousMonthLabel={'Previous month'}
+    nextMonthLabel={'Next month'}
+    onvaluechange={(next) => {
+      if (next instanceof Date) open = false;
+    }}
+  />
+</Popover>
 
-<style lang="scss">
-  .date-picker-recipe {
-    display: grid;
-    justify-items: start;
-    gap: var(--soya-space-3);
-    min-inline-size: 0;
-  }
-  .date-picker-recipe small {
-    color: var(--soya-text-secondary);
-  }
-</style>
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
 `},"date-range-filter":{ko:`<script lang="ts">
-  import { Button, Field, Input } from 'soya-ui';
+  import { Button, CodeBlock, Field, Input } from 'soya-ui';
 
   let presets = $derived([
     { id: 'week', label: '최근 7일', start: '2026-09-17', end: '2026-09-23' },
@@ -120,8 +96,12 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   let activePreset = $derived(
     presets.find((preset) => preset.start === start && preset.end === end)?.id ?? 'custom',
   );
-  let activePresetLabel = $derived(
-    presets.find((preset) => preset.id === activePreset)?.label ?? '직접 입력',
+  let stateJson = $derived(
+    JSON.stringify(
+      { start, end, activePreset, invalidOrder, referenceDate: fixtureToday },
+      null,
+      2,
+    ),
   );
 
   function applyPreset(preset: (typeof presets)[number]) {
@@ -179,10 +159,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   </div>
 </div>
 
-<small aria-live="polite">
-  <strong>{invalidOrder ? '날짜 순서를 확인하세요' : activePresetLabel}</strong>
-  · {start} → {end}
-</small>
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
 
 <style lang="scss">
   .date-recipe,
@@ -215,7 +192,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   }
 </style>
 `,en:`<script lang="ts">
-  import { Button, Field, Input } from 'soya-ui';
+  import { Button, CodeBlock, Field, Input } from 'soya-ui';
 
   let presets = $derived([
     { id: 'week', label: 'Last 7 days', start: '2026-09-17', end: '2026-09-23' },
@@ -235,8 +212,12 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   let activePreset = $derived(
     presets.find((preset) => preset.start === start && preset.end === end)?.id ?? 'custom',
   );
-  let activePresetLabel = $derived(
-    presets.find((preset) => preset.id === activePreset)?.label ?? 'Custom range',
+  let stateJson = $derived(
+    JSON.stringify(
+      { start, end, activePreset, invalidOrder, referenceDate: fixtureToday },
+      null,
+      2,
+    ),
   );
 
   function applyPreset(preset: (typeof presets)[number]) {
@@ -294,10 +275,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   </div>
 </div>
 
-<small aria-live="polite">
-  <strong>{invalidOrder ? 'Check the date order' : activePresetLabel}</strong>
-  · {start} → {end}
-</small>
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
 
 <style lang="scss">
   .date-recipe,
@@ -331,10 +309,11 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
 </style>
 `},"inline-confirm":{ko:`<script lang="ts">
   import { tick } from 'svelte';
-  import { Alert, Button, Card, EmptyState } from 'soya-ui';
+  import { Alert, Button, Card, CodeBlock, EmptyState } from 'soya-ui';
 
   let confirming = $state(false);
   let removed = $state(false);
+  let stateJson = $derived(JSON.stringify({ confirming, removed }, null, 2));
   let container: HTMLElement;
 
   async function focusAction(name: 'delete' | 'cancel' | 'restore') {
@@ -403,6 +382,8 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   {/if}
 </div>
 
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
+
 <style lang="scss">
   .inline-confirm-recipe,
   :global(.job-row),
@@ -445,10 +426,11 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
 </style>
 `,en:`<script lang="ts">
   import { tick } from 'svelte';
-  import { Alert, Button, Card, EmptyState } from 'soya-ui';
+  import { Alert, Button, Card, CodeBlock, EmptyState } from 'soya-ui';
 
   let confirming = $state(false);
   let removed = $state(false);
+  let stateJson = $derived(JSON.stringify({ confirming, removed }, null, 2));
   let container: HTMLElement;
 
   async function focusAction(name: 'delete' | 'cancel' | 'restore') {
@@ -520,6 +502,8 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   {/if}
 </div>
 
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
+
 <style lang="scss">
   .inline-confirm-recipe,
   :global(.job-row),
@@ -561,7 +545,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   }
 </style>
 `},"job-list-detail":{ko:`<script lang="ts">
-  import { Badge, Button, Card, DescriptionList } from 'soya-ui';
+  import { Badge, Button, Card, CodeBlock, DescriptionList } from 'soya-ui';
 
   let jobs = $derived([
     {
@@ -591,6 +575,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   ]);
   let selectedId = $state('1048');
   let selected = $derived(jobs.find((job) => job.id === selectedId) ?? jobs[0]);
+  let stateJson = $derived(JSON.stringify({ selectedId, status: selected.status }, null, 2));
 <\/script>
 
 {#snippet primary()}
@@ -635,6 +620,8 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
     {@render secondary()}
   </Card>
 </div>
+
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
 
 <style lang="scss">
   .job-detail-recipe {
@@ -696,7 +683,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   }
 </style>
 `,en:`<script lang="ts">
-  import { Badge, Button, Card, DescriptionList } from 'soya-ui';
+  import { Badge, Button, Card, CodeBlock, DescriptionList } from 'soya-ui';
 
   let jobs = $derived([
     {
@@ -726,6 +713,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   ]);
   let selectedId = $state('1048');
   let selected = $derived(jobs.find((job) => job.id === selectedId) ?? jobs[0]);
+  let stateJson = $derived(JSON.stringify({ selectedId, status: selected.status }, null, 2));
 <\/script>
 
 {#snippet primary()}
@@ -770,6 +758,8 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
     {@render secondary()}
   </Card>
 </div>
+
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
 
 <style lang="scss">
   .job-detail-recipe {
@@ -832,7 +822,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
 </style>
 `},"load-more":{ko:`<script lang="ts">
   import { onDestroy } from 'svelte';
-  import { Badge, Button, Card, EmptyState } from 'soya-ui';
+  import { Badge, Button, Card, CodeBlock, EmptyState } from 'soya-ui';
 
   let jobs = $derived([
     '검색 색인 검증',
@@ -848,6 +838,9 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   let timer: ReturnType<typeof setTimeout> | undefined;
   let visibleJobs = $derived(jobs.slice(0, visibleCount));
   let cursor = $derived(visibleCount < jobs.length ? \`cursor-\${visibleCount}\` : undefined);
+  let stateJson = $derived(
+    JSON.stringify({ visibleCount, loading, cursor: cursor ?? null }, null, 2),
+  );
 
   function loadMore() {
     if (loading || !cursor) return;
@@ -893,7 +886,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   {/if}
 </div>
 
-<small aria-live="polite">{'다음 커서:'} {cursor ?? '없음'}</small>
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
 
 <style lang="scss">
   .load-more-recipe,
@@ -930,7 +923,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
 </style>
 `,en:`<script lang="ts">
   import { onDestroy } from 'svelte';
-  import { Badge, Button, Card, EmptyState } from 'soya-ui';
+  import { Badge, Button, Card, CodeBlock, EmptyState } from 'soya-ui';
 
   let jobs = $derived([
     'Search index validation',
@@ -946,6 +939,9 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   let timer: ReturnType<typeof setTimeout> | undefined;
   let visibleJobs = $derived(jobs.slice(0, visibleCount));
   let cursor = $derived(visibleCount < jobs.length ? \`cursor-\${visibleCount}\` : undefined);
+  let stateJson = $derived(
+    JSON.stringify({ visibleCount, loading, cursor: cursor ?? null }, null, 2),
+  );
 
   function loadMore() {
     if (loading || !cursor) return;
@@ -991,7 +987,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   {/if}
 </div>
 
-<small aria-live="polite">{'Next cursor:'} {cursor ?? 'None'}</small>
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
 
 <style lang="scss">
   .load-more-recipe,
@@ -1041,6 +1037,9 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   let wrap = $state(false);
   let errorsOnly = $state(false);
   let code = $derived(allLines.filter((line) => !errorsOnly || line.includes('ERROR')).join('\\n'));
+  let stateJson = $derived(
+    JSON.stringify({ wrap, errorsOnly, lineCount: code.split('\\n').length }, null, 2),
+  );
   let highlightedLines = $state<CodeTokenLine[] | undefined>(undefined);
 
   $effect(() => {
@@ -1080,7 +1079,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   />
 </div>
 
-<small aria-live="polite">{code.split('\\n').length}{'줄'}</small>
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
 
 <style>
   .log-panel-recipe {
@@ -1130,6 +1129,9 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   let wrap = $state(false);
   let errorsOnly = $state(false);
   let code = $derived(allLines.filter((line) => !errorsOnly || line.includes('ERROR')).join('\\n'));
+  let stateJson = $derived(
+    JSON.stringify({ wrap, errorsOnly, lineCount: code.split('\\n').length }, null, 2),
+  );
   let highlightedLines = $state<CodeTokenLine[] | undefined>(undefined);
 
   $effect(() => {
@@ -1169,7 +1171,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   />
 </div>
 
-<small aria-live="polite">{code.split('\\n').length}{' lines'}</small>
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
 
 <style>
   .log-panel-recipe {
@@ -1205,7 +1207,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   }
 </style>
 `},"scroll-to-top":{ko:`<script lang="ts">
-  import { Button } from 'soya-ui';
+  import { Button, CodeBlock } from 'soya-ui';
 
   let entries = $derived(
     Array.from({ length: 24 }, (_, index) => ({
@@ -1219,6 +1221,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   );
   let region: HTMLElement;
   let movedToTop = $state(false);
+  let stateJson = $derived(JSON.stringify({ movedToTop }, null, 2));
 
   function scrollToTop() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1240,9 +1243,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   </section>
 </div>
 
-<small aria-live="polite">
-  {movedToTop ? '결과 영역의 처음으로 이동했습니다.' : '목록을 탐색하세요.'}
-</small>
+<CodeBlock code={stateJson} language="json" label={'현재 상태'} copy={false} />
 
 <style lang="scss">
   .scroll-top-recipe {
@@ -1277,7 +1278,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   }
 </style>
 `,en:`<script lang="ts">
-  import { Button } from 'soya-ui';
+  import { Button, CodeBlock } from 'soya-ui';
 
   let entries = $derived(
     Array.from({ length: 24 }, (_, index) => ({
@@ -1291,6 +1292,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   );
   let region: HTMLElement;
   let movedToTop = $state(false);
+  let stateJson = $derived(JSON.stringify({ movedToTop }, null, 2));
 
   function scrollToTop() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1317,9 +1319,7 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
   </section>
 </div>
 
-<small aria-live="polite">
-  {movedToTop ? 'Moved to the start of the results region.' : 'Browse the list.'}
-</small>
+<CodeBlock code={stateJson} language="json" label={'Current state'} copy={false} />
 
 <style lang="scss">
   .scroll-top-recipe {
@@ -1353,6 +1353,6 @@ import{A as e,At as t,Ct as n,D as r,I as i,J as a,K as o,M as s,Nt as c,P as l,
     overflow-wrap: anywhere;
   }
 </style>
-`}},te=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack date-recipe svelte-15m1zzk"><div class="preset-row svelte-15m1zzk" role="group"><!> <!></div> <div class="date-fields svelte-15m1zzk"><!> <!></div></div></div> <div class="example-feedback"><small aria-live="polite"><strong> </strong> </small> <small class="example-feedback-note"> </small></div></div>`);function ne(e,i){n(i,!0);let a=f(i,`locale`,3,`ko`);function c(e,t){return a()===`en`?t:e}let d=x(()=>[{id:`week`,label:c(`최근 7일`,`Last 7 days`),start:`2026-09-17`,end:`2026-09-23`},{id:`month`,label:c(`최근 30일`,`Last 30 days`),start:`2026-08-25`,end:`2026-09-23`},{id:`current-month`,label:c(`이번 달`,`This month`),start:`2026-09-01`,end:`2026-09-23`}]),v={start:`2026-09-17`,end:`2026-09-23`},b=g(m(v.start)),S=g(m(v.end)),C=x(()=>!!(o(b)&&o(S)&&o(b)>o(S))),w=x(()=>o(d).find(e=>e.start===o(b)&&e.end===o(S))?.id??`custom`),T=x(()=>o(d).find(e=>e.id===o(w))?.label??c(`직접 입력`,`Custom range`));function D(e){O(b,e.start,!0),O(S,e.end,!0)}function k(){O(b,v.start,!0),O(S,v.end,!0)}var j=te(),N=p(j),I=p(N),L=p(I),R=p(L);r(R,17,()=>o(d),e=>e.id,(e,t)=>{{let n=x(()=>o(w)===o(t).id?`primary`:`secondary`),r=x(()=>o(w)===o(t).id);M(e,{size:`sm`,get variant(){return o(n)},get"aria-pressed"(){return o(r)},onclick:()=>D(o(t)),children:(e,n)=>{y();var r=A();h(()=>s(r,o(t).label)),l(e,r)},$$slots:{default:!0}})}});var z=E(R,2);M(z,{size:`sm`,variant:`ghost`,onclick:k,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>c(`기간 초기화`,`Reset range`)]),l(e,n)},$$slots:{default:!0}}),t(L);var B=E(L,2),V=p(B);{let e=(e,t)=>{let n=()=>(t?.()).id,r=()=>(t?.()).describedBy,i=()=>(t?.()).invalid;{let t=x(()=>i()||o(C));P(e,{get id(){return n()},type:`date`,get"aria-describedby"(){return r()},get invalid(){return o(t)},required:!0,get value(){return o(b)},set value(e){O(b,e,!0)}})}},t=x(()=>c(`시작일`,`Start date`)),n=x(()=>o(C)?c(`시작일은 종료일보다 늦을 수 없습니다.`,`Start date cannot be later than end date.`):void 0);F(V,{get label(){return o(t)},required:!0,get error(){return o(n)},children:e,$$slots:{default:!0}})}var H=E(V,2);{let e=(e,t)=>{let n=()=>(t?.()).id,r=()=>(t?.()).describedBy,i=()=>(t?.()).invalid;{let t=x(()=>i()||o(C));P(e,{get id(){return n()},type:`date`,get"aria-describedby"(){return r()},get invalid(){return o(t)},required:!0,get value(){return o(S)},set value(e){O(S,e,!0)}})}},t=x(()=>c(`종료일`,`End date`));F(H,{get label(){return o(t)},required:!0,children:e,$$slots:{default:!0}})}t(B),t(I),t(N);var U=E(N,2),W=p(U),G=p(W),K=p(G,!0);t(G);var q=E(G);t(W);var J=E(W,2),Y=p(J);t(J),t(U),t(j),h((e,t,n)=>{_(L,`aria-label`,e),s(K,t),s(q,` · ${o(b)??``} → ${o(S)??``}`),s(Y,`${n??``}: 2026-09-23`)},[()=>c(`기간 프리셋`,`Date range presets`),()=>o(C)?c(`날짜 순서를 확인하세요`,`Check the date order`):o(T),()=>c(`예제 기준일`,`Sample reference date`)]),l(e,j),u()}var re=i(`<div class="date-picker-recipe svelte-1g28qx3"><!> <small aria-live="polite" class="svelte-1g28qx3"> </small></div>`);function ie(e,r){n(r,!0);let i=f(r,`locale`,3,`ko`);function a(e,t){return i()===`en`?t:e}let c=g(!1),d=g(m(new Date(2026,8,24))),_=x(()=>o(d)instanceof Date?new Intl.DateTimeFormat(a(`ko-KR`,`en-US`),{year:`numeric`,month:`long`,day:`numeric`}).format(o(d)):a(`날짜를 선택하세요`,`Choose a date`));var b=re(),S=p(b);V(S,{align:`start`,get open(){return o(c)},set open(e){O(c,e,!0)},trigger:(e,t=v)=>{{let n=x(()=>a(`날짜 선택`,`Choose date`));M(e,T(t,{variant:`secondary`,get"aria-label"(){return o(n)},children:(e,t)=>{y();var n=A();h(()=>s(n,o(_))),l(e,n)},$$slots:{default:!0}}))}},children:(e,t)=>{{let t=x(()=>a(`ko-KR`,`en-US`)),n=x(()=>a(`예약 날짜`,`Reservation date`)),r=x(()=>a(`이전 달`,`Previous month`)),i=x(()=>a(`다음 달`,`Next month`));K(e,{mode:`single`,get locale(){return o(t)},get label(){return o(n)},get previousMonthLabel(){return o(r)},get nextMonthLabel(){return o(i)},onvaluechange:e=>{e instanceof Date&&O(c,!1)},get value(){return o(d)},set value(e){O(d,e,!0)}})}},$$slots:{trigger:!0,default:!0}});var C=E(S,2),w=p(C);t(C),t(b),h(e=>s(w,`${e??``}: ${o(_)??``}`),[()=>a(`선택한 날짜`,`Selected date`)]),l(e,b),u()}var ae=i(`<span><strong> </strong><small class="svelte-1hhllpw"> </small></span> <!>`,1),oe=i(`<div class="confirm-actions svelte-1hhllpw" role="group"><!> <!></div>`),se=i(`<!> <!>`,1),ce=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack inline-confirm-recipe svelte-1hhllpw"><!></div></div> <div class="example-feedback"><small class="example-feedback-note svelte-1hhllpw"><strong> </strong> <strong>AlertDialog:</strong> </small></div></div>`);function le(r,i){n(i,!0);let c=f(i,`locale`,3,`ko`);function d(e,t){return c()===`en`?t:e}let m=g(!1),v=g(!1),S;async function w(e){await a(),S.querySelector(`[data-inline-action="${e}"]`)?.focus()}async function T(){O(m,!0),await w(`cancel`)}async function D(){O(m,!1),await w(`delete`)}async function k(){O(v,!0),O(m,!1),await w(`restore`)}async function j(){O(v,!1),await w(`delete`)}var N=ce(),P=p(N),F=p(P),I=p(F),L=e=>{{let t=e=>{M(e,{"data-inline-action":`restore`,size:`sm`,variant:`secondary`,onclick:j,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`복원`,`Restore`)]),l(e,n)},$$slots:{default:!0}})},n=x(()=>d(`예제 작업을 제거했습니다`,`Sample job removed`)),r=x(()=>d(`실제 API나 외부 데이터는 변경하지 않았습니다.`,`No real API or external data was changed.`));B(e,{get title(){return o(n)},get description(){return o(r)},actions:t,$$slots:{actions:!0}})}},V=n=>{var r=se(),i=C(r);R(i,{class:`job-row`,padding:`compact`,children:(n,r)=>{var i=ae(),a=C(i),c=p(a),u=p(c,!0);t(c);var f=E(c),g=p(f);t(f),t(a);var _=E(a,2),v=e=>{M(e,{"data-inline-action":`delete`,size:`sm`,variant:`danger`,onclick:T,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`삭제`,`Delete`)]),l(e,n)},$$slots:{default:!0}})};e(_,e=>{o(m)||e(v)}),h((e,t)=>{s(u,e),s(g,`run-1048 · ${t??``}`)},[()=>d(`검색 색인 검증`,`Search index validation`),()=>d(`로컬 예제 데이터`,`local sample data`)]),l(n,i)},$$slots:{default:!0}});var a=E(i,2),c=e=>{{let n=x(()=>d(`이 작업을 목록에서 제거할까요?`,`Remove this job from the list?`)),r=x(()=>d(`현재 행의 맥락을 유지한 채 한 번 더 확인합니다.`,`Confirm once more while keeping the current row in context.`));z(e,{tone:`warning`,get title(){return o(n)},get description(){return o(r)},children:(e,n)=>{var r=oe(),i=p(r);M(i,{"data-inline-action":`cancel`,size:`sm`,variant:`secondary`,onclick:D,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`취소`,`Cancel`)]),l(e,n)},$$slots:{default:!0}});var a=E(i,2);M(a,{size:`sm`,variant:`danger`,onclick:k,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`제거 확인`,`Confirm removal`)]),l(e,n)},$$slots:{default:!0}}),t(r),h(e=>_(r,`aria-label`,e),[()=>d(`예제 작업 삭제 확인`,`Confirm sample job deletion`)]),l(e,r)},$$slots:{default:!0}})}};e(a,e=>{o(m)&&e(c)}),l(n,r)};e(I,e=>{o(v)?e(L):e(V,-1)}),t(F),b(F,e=>S=e,()=>S),t(P);var H=E(P,2),U=p(H),W=p(U),G=p(W,!0);t(W);var K=E(W),q=E(K,2);t(U),t(H),t(N),h((e,t,n)=>{s(G,e),s(K,` ${t??``} `),s(q,` ${n??``}`)},[()=>d(`행 안에서 확인:`,`Inline:`),()=>d(`현재 행을 계속 보면서 확인합니다.`,`Confirm while keeping the current row visible.`),()=>d(`배경 상호작용을 막고 결정에 포커스를 모아야 할 때 사용합니다.`,`Use it when background interaction must stop and focus should remain on the decision.`)]),l(r,N),u()}var ue=i(`<span class="svelte-jpfj1b"><strong class="svelte-jpfj1b"> </strong><small class="svelte-jpfj1b"> </small></span>`),de=i(`<nav class="job-list svelte-jpfj1b"></nav>`),fe=i(`<section class="job-detail svelte-jpfj1b" aria-live="polite"><h3 class="svelte-jpfj1b"> </h3> <!></section>`),pe=i(`<h3 id="job-list-heading"> </h3> <!>`,1),me=i(`<h3 id="job-detail-heading"> </h3> <!>`,1),he=i(`<div class="example-stack job-detail-recipe svelte-jpfj1b"><!> <!></div>`);function ge(e,n){let i=e=>{var n=de();r(n,21,()=>o(m),e=>e.id,(e,n)=>{{let r=x(()=>o(v)===o(n).id?`primary`:`ghost`),i=x(()=>o(v)===o(n).id);M(e,{get variant(){return o(r)},get"aria-pressed"(){return o(i)},onclick:()=>O(v,o(n).id,!0),children:(e,r)=>{var i=ue(),a=p(i),c=p(a,!0);t(a);var u=E(a),d=p(u);t(u),t(i),h(()=>{s(c,o(n).name),s(d,`run-${o(n).id??``} · ${o(n).owner??``}`)}),l(e,i)},$$slots:{default:!0}})}}),t(n),h(e=>_(n,`aria-label`,e),[()=>d(`예제 작업`,`Sample jobs`)]),l(e,n)},a=e=>{{let t=x(()=>o(b).status===`ready`?`success`:`neutral`);L(e,{get tone(){return o(t)},children:(e,t)=>{y();var n=A();h(()=>s(n,o(b).statusLabel)),l(e,n)},$$slots:{default:!0}})}},c=e=>{var n=fe(),r=p(n),i=p(r,!0);t(r);var c=E(r,2);{let e=x(()=>d(`${o(b).name} 상세`,`${o(b).name} details`)),t=x(()=>[{term:d(`실행 ID`,`Run ID`),value:`run-${o(b).id}`},{term:d(`상태`,`Status`),value:a},{term:d(`담당자`,`Owner`),value:o(b).owner},{term:d(`범위`,`Scope`),value:o(b).scope}]);H(c,{get label(){return o(e)},columns:1,get items(){return o(t)}})}t(n),h(()=>s(i,o(b).name)),l(e,n)},u=f(n,`locale`,3,`ko`);function d(e,t){return u()===`en`?t:e}let m=x(()=>[{id:`1048`,name:d(`검색 색인 검증`,`Search index validation`),owner:d(`민지`,`Minji`),status:`ready`,statusLabel:d(`준비됨`,`Ready`),scope:`Wiki · Post · Comment`},{id:`1047`,name:d(`기관별 권한 스냅샷 비교`,`Compare organization permission snapshots`),owner:d(`서준`,`Seojun`),status:`running`,statusLabel:d(`실행 중`,`Running`),scope:d(`42개 기관`,`42 organizations`)},{id:`1046`,name:d(`매우 긴 프로젝트 이름의 문서와 첨부 파일 접근 경로 정합성 확인`,`Validate document and attachment paths for a project with a very long name`),owner:d(`지우`,`Jiwoo`),status:`queued`,statusLabel:d(`대기`,`Queued`),scope:`Files · Links`}]),v=g(`1048`),b=x(()=>o(m).find(e=>e.id===o(v))??o(m)[0]);var S=he(),w=p(S);R(w,{class:`job-panel`,padding:`compact`,role:`region`,"aria-labelledby":`job-list-heading`,children:(e,n)=>{var r=pe(),a=C(r),o=p(a,!0);t(a);var c=E(a,2);i(c),h(e=>s(o,e),[()=>d(`작업 선택`,`Job selection`)]),l(e,r)},$$slots:{default:!0}});var T=E(w,2);R(T,{class:`job-panel`,padding:`compact`,role:`region`,"aria-labelledby":`job-detail-heading`,children:(e,n)=>{var r=me(),i=C(r),a=p(i,!0);t(i);var o=E(i,2);c(o),h(e=>s(a,e),[()=>d(`작업 상세`,`Job details`)]),l(e,r)},$$slots:{default:!0}}),t(S),l(e,S)}var _e=i(`<span class="svelte-gqhmp4"> </span><!>`,1),ve=i(`<li class="svelte-gqhmp4"><!></li>`),ye=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack load-more-recipe svelte-gqhmp4"><ul class="svelte-gqhmp4"></ul> <!></div></div> <div class="example-feedback"><small aria-live="polite"> </small></div></div>`);function $(i,a){n(a,!0);let c=f(a,`locale`,3,`ko`);function d(e,t){return c()===`en`?t:e}let m=x(()=>[d(`검색 색인 검증`,`Search index validation`),d(`기관별 권한 스냅샷 비교`,`Compare organization permission snapshots`),d(`통합 검색 재현`,`Reproduce unified search`),d(`Wiki 문서 샘플링`,`Sample wiki documents`),d(`댓글 관계 점검`,`Check comment relationships`),d(`파일 접근 경로 확인`,`Verify file access paths`),d(`긴 이름의 엔터프라이즈 프로젝트 검색 결과 정합성 확인`,`Validate search results for an enterprise project with a long name`)]),v=g(3),b=g(!1),w,T=x(()=>o(m).slice(0,o(v))),D=x(()=>o(v)<o(m).length?`cursor-${o(v)}`:void 0);function k(){!o(b)&&o(D)&&(O(b,!0),w=setTimeout(()=>{O(v,Math.min(o(m).length,o(v)+2),!0),O(b,!1)},500))}function j(){w&&clearTimeout(w),O(v,3),O(b,!1)}S(()=>{w&&clearTimeout(w)});var N=ye(),P=p(N),F=p(P),I=p(F);r(I,23,()=>o(T),(e,t)=>`${t}-${e}`,(e,n,r)=>{var i=ve(),a=p(i);R(a,{padding:`compact`,children:(e,i)=>{var a=_e(),c=C(a),u=p(c,!0);t(c);var d=E(c);L(d,{tone:`neutral`,children:(e,t)=>{y();var n=A();h(()=>s(n,`#${o(r)+1}`)),l(e,n)},$$slots:{default:!0}}),h(()=>s(u,o(n))),l(e,a)},$$slots:{default:!0}}),t(i),l(e,i)}),t(I);var z=E(I,2),V=e=>{M(e,{get loading(){return o(b)},get disabled(){return o(b)},onclick:k,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>o(b)?d(`다음 결과를 불러오는 중`,`Loading more results`):d(`결과 더 보기`,`Load more results`)]),l(e,n)},$$slots:{default:!0}})},H=e=>{{let t=e=>{M(e,{size:`sm`,variant:`secondary`,onclick:j,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`예제 초기화`,`Reset example`)]),l(e,n)},$$slots:{default:!0}})},n=x(()=>d(`모든 결과를 불러왔습니다`,`All results loaded`)),r=x(()=>d(`다음 페이지를 가리키는 값이 없으면 추가 요청을 보내지 않습니다.`,`No additional request is sent without a cursor.`));B(e,{get title(){return o(n)},get description(){return o(r)},actions:t,$$slots:{actions:!0}})}};e(z,e=>{o(D)?e(V):e(H,-1)}),t(F),t(P);var U=E(P,2),W=p(U),G=p(W);t(W),t(U),t(N),h((e,t,n)=>{_(I,`aria-label`,e),s(G,`${t??``} ${n??``}`)},[()=>d(`예제 작업 결과`,`Sample job results`),()=>d(`다음 커서:`,`Next cursor:`),()=>o(D)??d(`없음`,`None`)]),l(i,N),u()}var be=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack log-panel-recipe svelte-nvrv2l"><div class="example-controls"><!> <!></div> <!></div></div> <div class="example-feedback"><small aria-live="polite"> </small> <small class="example-feedback-note"> </small></div></div>`);function xe(e,r){n(r,!0);let i=f(r,`locale`,3,`ko`);function a(e,t){return i()===`en`?t:e}let c=[`14:32:08 INFO  fixture run-1048 started`,`14:32:09 INFO  loaded 1,240 searchable records`,`14:32:10 WARN  institution alpha returned a delayed snapshot`,`14:32:11 INFO  permission comparison completed`,`14:32:12 ERROR sample document path was not found`,`14:32:13 INFO  fixture run finished with 1 warning and 1 sampled error`],d=g(!1),m=g(!1),_=x(()=>c.filter(e=>!o(m)||e.includes(`ERROR`)).join(`
-`)),v=g(void 0);D(()=>{let e=o(_),t=!0;return j(async()=>{let{highlightCode:e}=await import(`../chunks/BDhWHrEw.js`);return{highlightCode:e}},__vite__mapDeps([0,1]),import.meta.url).then(async({highlightCode:n})=>{let r=await n(e,`bash`);t&&O(v,r,!0)}).catch(()=>{t&&O(v,void 0)}),()=>{t=!1}});var b=be(),S=p(b),C=p(S),w=p(C),T=p(w);I(T,{get checked(){return o(d)},set checked(e){O(d,e,!0)},children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>a(`긴 로그 줄바꿈`,`Wrap long logs`)]),l(e,n)},$$slots:{default:!0}});var k=E(T,2);M(k,{size:`sm`,variant:`secondary`,onclick:()=>O(m,!o(m)),children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>o(m)?a(`전체 로그 보기`,`Show all logs`):a(`오류만 보기`,`Show errors only`)]),l(e,n)},$$slots:{default:!0}}),t(w);var N=E(w,2);{let e=x(()=>o(m)?a(`오류 로그`,`Error log`):a(`실행 로그`,`Execution log`)),t=x(()=>a(`표시한 로그 복사`,`Copy displayed log`)),n=x(()=>a(`로그 복사됨`,`Log copied`)),r=x(()=>a(`로그를 복사할 수 없음`,`Unable to copy log`));G(N,{get code(){return o(_)},language:`bash`,get label(){return o(e)},get wrap(){return o(d)},lineNumbers:!0,get copyLabel(){return o(t)},get copiedLabel(){return o(n)},get copyErrorLabel(){return o(r)},get highlightedLines(){return o(v)}})}t(C),t(S);var P=E(S,2),F=p(P),L=p(F);t(F);var R=E(F,2),z=p(R,!0);t(R),t(P),t(b),h((e,t,n)=>{s(L,`${e??``}${t??``}`),s(z,n)},[()=>o(_).split(`
-`).length,()=>a(`줄`,` lines`),()=>a(`서버를 호출하지 않는 로컬 예제 데이터`,`Local sample data without server calls`)]),l(e,b),u()}var Se=i(`<li class="svelte-1g2270s"><strong> </strong><span class="svelte-1g2270s"> </span></li>`),Ce=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="scroll-top-recipe svelte-1g2270s"><section class="result-scroll svelte-1g2270s" tabindex="-1"><h3> </h3> <ol class="svelte-1g2270s"></ol> <!></section></div></div> <div class="example-feedback"><small aria-live="polite"> </small> <small class="example-feedback-note"> <kbd>Tab</kbd> <kbd>Enter</kbd></small></div></div>`);function we(e,i){n(i,!0);let a=f(i,`locale`,3,`ko`);function c(e,t){return a()===`en`?t:e}let d=x(()=>Array.from({length:24},(e,t)=>({id:t+1,title:c(`${t+1}단계 예제 결과`,`Sample result — step ${t+1}`),description:t%5==0?c(`기관별 권한과 매우 긴 문서 경로를 비교한 상세 결과입니다.`,`Detailed result comparing organization permissions and a very long document path.`):c(`로컬 검증 결과를 확인했습니다.`,`The local validation result was verified.`)}))),m,v=g(!1);function S(){let e=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;m.scrollTo({top:0,behavior:e?`auto`:`smooth`}),m.focus({preventScroll:!0}),O(v,!0)}var C=Ce(),w=p(C),T=p(w),D=p(T),k=p(D),j=p(k,!0);t(k);var N=E(k,2);r(N,21,()=>o(d),e=>e.id,(e,n)=>{var r=Se(),i=p(r),a=p(i,!0);t(i);var c=E(i),u=p(c,!0);t(c),t(r),h(()=>{s(a,o(n).title),s(u,o(n).description)}),l(e,r)}),t(N);var P=E(N,2);M(P,{variant:`secondary`,onclick:S,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>c(`결과 처음으로 이동`,`Move to the start of results`)]),l(e,n)},$$slots:{default:!0}}),t(D),b(D,e=>m=e,()=>m),t(T),t(w);var F=E(w,2),I=p(F),L=p(I,!0);t(I);var R=E(I,2),z=p(R),B=E(z,2);y(),t(R),t(F),t(C),h((e,t,n,r,i)=>{_(D,`aria-label`,e),s(j,t),s(L,n),s(z,`${r??``}: `),s(B,` ${i??``} `)},[()=>c(`긴 예제 결과`,`Long sample results`),()=>c(`검증 결과`,`Validation results`),()=>o(v)?c(`결과 영역의 처음으로 이동했습니다.`,`Moved to the start of the results region.`):c(`목록을 탐색하세요.`,`Browse the list.`),()=>c(`키보드`,`Keyboard`),()=>c(`후`,`then`)]),l(e,C),u()}var Te={"date-picker":{component:ie,source:Q[`date-picker`]},"date-range-filter":{component:ne,source:Q[`date-range-filter`]},"inline-confirm":{component:le,source:Q[`inline-confirm`]},"job-list-detail":{component:ge,source:Q[`job-list-detail`]},"load-more":{component:$,source:Q[`load-more`]},"log-panel":{component:xe,source:Q[`log-panel`]},"scroll-to-top":{component:we,source:Q[`scroll-to-top`]}},Ee=i(`<meta name="description"/>`),De=i(`<li class="svelte-1jxnhfq"> </li>`),Oe=i(`<section id="example" class="doc-section svelte-1jxnhfq"><h2> </h2> <p class="section-copy"> </p> <!></section> <section id="guidance" class="doc-section guidance-grid svelte-1jxnhfq"><div class="svelte-1jxnhfq"><h2> </h2> <p class="svelte-1jxnhfq"> </p></div> <div class="svelte-1jxnhfq"><h2> </h2> <ul class="svelte-1jxnhfq"></ul></div></section>`,1);function ke(e,i){n(i,!0);let a=N(),c=x(()=>W.find(e=>e.slug===i.data.slug)),f=x(()=>U(o(c),a.locale)),m=x(()=>Te[i.data.slug]),g=[{id:`example`,ko:`동작 예제`,en:`Live recipe`},{id:`guidance`,ko:`적용 기준`,en:`Guidance`}],v=x(()=>[{label:a.t(`가이드`,`Guides`)},{label:a.t(`패턴`,`Patterns`),href:`/patterns`},{label:o(f).title,current:!0}]);k(`1jxnhfq`,e=>{var t=Ee();h(()=>_(t,`content`,o(f).description)),d(()=>{w.title=`${o(f).title??``} — Soya UI`}),l(e,t)}),Y(e,{get title(){return o(f).title},get description(){return o(f).description},get toc(){return g},get breadcrumbs(){return o(v)},children:(e,n)=>{var i=Oe(),c=C(i),u=p(c),d=p(u,!0);t(u);var g=E(u,2),_=p(g,!0);t(g);var v=E(g,2);q(v,{get component(){return o(m).component},get source(){return o(m).source},get name(){return o(f).title},get locale(){return a.locale}}),t(c);var y=E(c,2),b=p(y),x=p(b),S=p(x,!0);t(x);var w=E(x,2),T=p(w,!0);t(w),t(b);var D=E(b,2),O=p(D),k=p(O,!0);t(O);var A=E(O,2);r(A,20,()=>o(f).options,e=>e,(e,n)=>{var r=De(),i=p(r,!0);t(r),h(()=>s(i,n)),l(e,r)}),t(A),t(D),t(y),h((e,t,n,r)=>{s(d,e),s(_,t),s(S,n),s(T,o(f).useWhen),s(k,r)},[()=>a.t(`동작 예제`,`Live recipe`),()=>a.t(`동작하는 조합을 확인하고, 선택한 언어의 예제 코드를 복사해 사용하세요.`,`Review the working composition and copy the example code in your selected language.`),()=>a.t(`적용 기준`,`Use when`),()=>a.t(`구성 방식`,`Composition choices`)]),l(e,i)},$$slots:{default:!0}}),u()}export{ke as component,X as universal};
+`}},Q=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack date-recipe svelte-15m1zzk"><div class="preset-row svelte-15m1zzk" role="group"><!> <!></div> <div class="date-fields svelte-15m1zzk"><!> <!></div></div></div> <div class="example-feedback"><!></div></div>`);function ne(e,i){n(i,!0);let a=f(i,`locale`,3,`ko`);function c(e,t){return a()===`en`?t:e}let d=x(()=>[{id:`week`,label:c(`최근 7일`,`Last 7 days`),start:`2026-09-17`,end:`2026-09-23`},{id:`month`,label:c(`최근 30일`,`Last 30 days`),start:`2026-08-25`,end:`2026-09-23`},{id:`current-month`,label:c(`이번 달`,`This month`),start:`2026-09-01`,end:`2026-09-23`}]),v=`2026-09-23`,b={start:`2026-09-17`,end:v},S=g(m(b.start)),C=g(m(b.end)),w=x(()=>!!(o(S)&&o(C)&&o(S)>o(C))),T=x(()=>o(d).find(e=>e.start===o(S)&&e.end===o(C))?.id??`custom`),D=x(()=>JSON.stringify({start:o(S),end:o(C),activePreset:o(T),invalidOrder:o(w),referenceDate:v},null,2));function k(e){O(S,e.start,!0),O(C,e.end,!0)}function j(){O(S,b.start,!0),O(C,b.end,!0)}var N=Q(),I=p(N),L=p(I),R=p(L),z=p(R);r(z,17,()=>o(d),e=>e.id,(e,t)=>{{let n=x(()=>o(T)===o(t).id?`primary`:`secondary`),r=x(()=>o(T)===o(t).id);M(e,{size:`sm`,get variant(){return o(n)},get"aria-pressed"(){return o(r)},onclick:()=>k(o(t)),children:(e,n)=>{y();var r=A();h(()=>s(r,o(t).label)),l(e,r)},$$slots:{default:!0}})}});var B=E(z,2);M(B,{size:`sm`,variant:`ghost`,onclick:j,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>c(`기간 초기화`,`Reset range`)]),l(e,n)},$$slots:{default:!0}}),t(R);var V=E(R,2),H=p(V);{let e=(e,t)=>{let n=()=>(t?.()).id,r=()=>(t?.()).describedBy,i=()=>(t?.()).invalid;{let t=x(()=>i()||o(w));P(e,{get id(){return n()},type:`date`,get"aria-describedby"(){return r()},get invalid(){return o(t)},required:!0,get value(){return o(S)},set value(e){O(S,e,!0)}})}},t=x(()=>c(`시작일`,`Start date`)),n=x(()=>o(w)?c(`시작일은 종료일보다 늦을 수 없습니다.`,`Start date cannot be later than end date.`):void 0);F(H,{get label(){return o(t)},required:!0,get error(){return o(n)},children:e,$$slots:{default:!0}})}var U=E(H,2);{let e=(e,t)=>{let n=()=>(t?.()).id,r=()=>(t?.()).describedBy,i=()=>(t?.()).invalid;{let t=x(()=>i()||o(w));P(e,{get id(){return n()},type:`date`,get"aria-describedby"(){return r()},get invalid(){return o(t)},required:!0,get value(){return o(C)},set value(e){O(C,e,!0)}})}},t=x(()=>c(`종료일`,`End date`));F(U,{get label(){return o(t)},required:!0,children:e,$$slots:{default:!0}})}t(V),t(L),t(I);var W=E(I,2),K=p(W);{let e=x(()=>c(`현재 상태`,`Current state`));G(K,{get code(){return o(D)},language:`json`,get label(){return o(e)},copy:!1})}t(W),t(N),h(e=>_(R,`aria-label`,e),[()=>c(`기간 프리셋`,`Date range presets`)]),l(e,N),u()}var re=i(`<div class="example-feedback-layout"><div class="example-preview-main"><!></div> <div class="example-feedback"><!></div></div>`);function ie(e,r){n(r,!0);let i=f(r,`locale`,3,`ko`);function a(e,t){return i()===`en`?t:e}let c=g(!1),d=g(m(new Date(2026,8,24))),_=x(()=>o(d)instanceof Date?new Intl.DateTimeFormat(a(`ko-KR`,`en-US`),{year:`numeric`,month:`long`,day:`numeric`}).format(o(d)):a(`날짜를 선택하세요`,`Choose a date`)),b=x(()=>JSON.stringify({open:o(c),selectedDate:o(_)},null,2));var S=re(),C=p(S),w=p(C);V(w,{align:`start`,get open(){return o(c)},set open(e){O(c,e,!0)},trigger:(e,t=v)=>{{let n=x(()=>a(`날짜 선택`,`Choose date`));M(e,T(t,{variant:`secondary`,get"aria-label"(){return o(n)},children:(e,t)=>{y();var n=A();h(()=>s(n,o(_))),l(e,n)},$$slots:{default:!0}}))}},children:(e,t)=>{{let t=x(()=>a(`ko-KR`,`en-US`)),n=x(()=>a(`예약 날짜`,`Reservation date`)),r=x(()=>a(`이전 달`,`Previous month`)),i=x(()=>a(`다음 달`,`Next month`));K(e,{mode:`single`,get locale(){return o(t)},get label(){return o(n)},get previousMonthLabel(){return o(r)},get nextMonthLabel(){return o(i)},onvaluechange:e=>{e instanceof Date&&O(c,!1)},get value(){return o(d)},set value(e){O(d,e,!0)}})}},$$slots:{trigger:!0,default:!0}}),t(C);var D=E(C,2),k=p(D);{let e=x(()=>a(`현재 상태`,`Current state`));G(k,{get code(){return o(b)},language:`json`,get label(){return o(e)},copy:!1})}t(D),t(S),l(e,S),u()}var ae=i(`<span><strong> </strong><small class="svelte-1hhllpw"> </small></span> <!>`,1),oe=i(`<div class="confirm-actions svelte-1hhllpw" role="group"><!> <!></div>`),se=i(`<!> <!>`,1),ce=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack inline-confirm-recipe svelte-1hhllpw"><!></div></div> <div class="example-feedback"><!></div></div>`);function le(r,i){n(i,!0);let c=f(i,`locale`,3,`ko`);function d(e,t){return c()===`en`?t:e}let m=g(!1),v=g(!1),S=x(()=>JSON.stringify({confirming:o(m),removed:o(v)},null,2)),w;async function T(e){await a(),w.querySelector(`[data-inline-action="${e}"]`)?.focus()}async function D(){O(m,!0),await T(`cancel`)}async function k(){O(m,!1),await T(`delete`)}async function j(){O(v,!0),O(m,!1),await T(`restore`)}async function N(){O(v,!1),await T(`delete`)}var P=ce(),F=p(P),I=p(F),L=p(I),V=e=>{{let t=e=>{M(e,{"data-inline-action":`restore`,size:`sm`,variant:`secondary`,onclick:N,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`복원`,`Restore`)]),l(e,n)},$$slots:{default:!0}})},n=x(()=>d(`예제 작업을 제거했습니다`,`Sample job removed`)),r=x(()=>d(`실제 API나 외부 데이터는 변경하지 않았습니다.`,`No real API or external data was changed.`));B(e,{get title(){return o(n)},get description(){return o(r)},actions:t,$$slots:{actions:!0}})}},H=n=>{var r=se(),i=C(r);R(i,{class:`job-row`,padding:`compact`,children:(n,r)=>{var i=ae(),a=C(i),c=p(a),u=p(c,!0);t(c);var f=E(c),g=p(f);t(f),t(a);var _=E(a,2),v=e=>{M(e,{"data-inline-action":`delete`,size:`sm`,variant:`danger`,onclick:D,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`삭제`,`Delete`)]),l(e,n)},$$slots:{default:!0}})};e(_,e=>{o(m)||e(v)}),h((e,t)=>{s(u,e),s(g,`run-1048 · ${t??``}`)},[()=>d(`검색 색인 검증`,`Search index validation`),()=>d(`로컬 예제 데이터`,`local sample data`)]),l(n,i)},$$slots:{default:!0}});var a=E(i,2),c=e=>{{let n=x(()=>d(`이 작업을 목록에서 제거할까요?`,`Remove this job from the list?`)),r=x(()=>d(`현재 행의 맥락을 유지한 채 한 번 더 확인합니다.`,`Confirm once more while keeping the current row in context.`));z(e,{tone:`warning`,get title(){return o(n)},get description(){return o(r)},children:(e,n)=>{var r=oe(),i=p(r);M(i,{"data-inline-action":`cancel`,size:`sm`,variant:`secondary`,onclick:k,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`취소`,`Cancel`)]),l(e,n)},$$slots:{default:!0}});var a=E(i,2);M(a,{size:`sm`,variant:`danger`,onclick:j,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`제거 확인`,`Confirm removal`)]),l(e,n)},$$slots:{default:!0}}),t(r),h(e=>_(r,`aria-label`,e),[()=>d(`예제 작업 삭제 확인`,`Confirm sample job deletion`)]),l(e,r)},$$slots:{default:!0}})}};e(a,e=>{o(m)&&e(c)}),l(n,r)};e(L,e=>{o(v)?e(V):e(H,-1)}),t(I),b(I,e=>w=e,()=>w),t(F);var U=E(F,2),W=p(U);{let e=x(()=>d(`현재 상태`,`Current state`));G(W,{get code(){return o(S)},language:`json`,get label(){return o(e)},copy:!1})}t(U),t(P),l(r,P),u()}var $=i(`<span class="svelte-jpfj1b"><strong class="svelte-jpfj1b"> </strong><small class="svelte-jpfj1b"> </small></span>`),ue=i(`<nav class="job-list svelte-jpfj1b"></nav>`),de=i(`<section class="job-detail svelte-jpfj1b" aria-live="polite"><h3 class="svelte-jpfj1b"> </h3> <!></section>`),fe=i(`<h3 id="job-list-heading"> </h3> <!>`,1),pe=i(`<h3 id="job-detail-heading"> </h3> <!>`,1),me=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack job-detail-recipe svelte-jpfj1b"><!> <!></div></div> <div class="example-feedback"><!></div></div>`);function he(e,n){let i=e=>{var n=ue();r(n,21,()=>o(m),e=>e.id,(e,n)=>{{let r=x(()=>o(v)===o(n).id?`primary`:`ghost`),i=x(()=>o(v)===o(n).id);M(e,{get variant(){return o(r)},get"aria-pressed"(){return o(i)},onclick:()=>O(v,o(n).id,!0),children:(e,r)=>{var i=$(),a=p(i),c=p(a,!0);t(a);var u=E(a),d=p(u);t(u),t(i),h(()=>{s(c,o(n).name),s(d,`run-${o(n).id??``} · ${o(n).owner??``}`)}),l(e,i)},$$slots:{default:!0}})}}),t(n),h(e=>_(n,`aria-label`,e),[()=>d(`예제 작업`,`Sample jobs`)]),l(e,n)},a=e=>{{let t=x(()=>o(b).status===`ready`?`success`:`neutral`);L(e,{get tone(){return o(t)},children:(e,t)=>{y();var n=A();h(()=>s(n,o(b).statusLabel)),l(e,n)},$$slots:{default:!0}})}},c=e=>{var n=de(),r=p(n),i=p(r,!0);t(r);var c=E(r,2);{let e=x(()=>d(`${o(b).name} 상세`,`${o(b).name} details`)),t=x(()=>[{term:d(`실행 ID`,`Run ID`),value:`run-${o(b).id}`},{term:d(`상태`,`Status`),value:a},{term:d(`담당자`,`Owner`),value:o(b).owner},{term:d(`범위`,`Scope`),value:o(b).scope}]);H(c,{get label(){return o(e)},columns:1,get items(){return o(t)}})}t(n),h(()=>s(i,o(b).name)),l(e,n)},u=f(n,`locale`,3,`ko`);function d(e,t){return u()===`en`?t:e}let m=x(()=>[{id:`1048`,name:d(`검색 색인 검증`,`Search index validation`),owner:d(`민지`,`Minji`),status:`ready`,statusLabel:d(`준비됨`,`Ready`),scope:`Wiki · Post · Comment`},{id:`1047`,name:d(`기관별 권한 스냅샷 비교`,`Compare organization permission snapshots`),owner:d(`서준`,`Seojun`),status:`running`,statusLabel:d(`실행 중`,`Running`),scope:d(`42개 기관`,`42 organizations`)},{id:`1046`,name:d(`매우 긴 프로젝트 이름의 문서와 첨부 파일 접근 경로 정합성 확인`,`Validate document and attachment paths for a project with a very long name`),owner:d(`지우`,`Jiwoo`),status:`queued`,statusLabel:d(`대기`,`Queued`),scope:`Files · Links`}]),v=g(`1048`),b=x(()=>o(m).find(e=>e.id===o(v))??o(m)[0]),S=x(()=>JSON.stringify({selectedId:o(v),status:o(b).status},null,2));var w=me(),T=p(w),D=p(T),k=p(D);R(k,{class:`job-panel`,padding:`compact`,role:`region`,"aria-labelledby":`job-list-heading`,children:(e,n)=>{var r=fe(),a=C(r),o=p(a,!0);t(a);var c=E(a,2);i(c),h(e=>s(o,e),[()=>d(`작업 선택`,`Job selection`)]),l(e,r)},$$slots:{default:!0}});var j=E(k,2);R(j,{class:`job-panel`,padding:`compact`,role:`region`,"aria-labelledby":`job-detail-heading`,children:(e,n)=>{var r=pe(),i=C(r),a=p(i,!0);t(i);var o=E(i,2);c(o),h(e=>s(a,e),[()=>d(`작업 상세`,`Job details`)]),l(e,r)},$$slots:{default:!0}}),t(D),t(T);var N=E(T,2),P=p(N);{let e=x(()=>d(`현재 상태`,`Current state`));G(P,{get code(){return o(S)},language:`json`,get label(){return o(e)},copy:!1})}t(N),t(w),l(e,w)}var ge=i(`<span class="svelte-gqhmp4"> </span><!>`,1),_e=i(`<li class="svelte-gqhmp4"><!></li>`),ve=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack load-more-recipe svelte-gqhmp4"><ul class="svelte-gqhmp4"></ul> <!></div></div> <div class="example-feedback"><!></div></div>`);function ye(i,a){n(a,!0);let c=f(a,`locale`,3,`ko`);function d(e,t){return c()===`en`?t:e}let m=x(()=>[d(`검색 색인 검증`,`Search index validation`),d(`기관별 권한 스냅샷 비교`,`Compare organization permission snapshots`),d(`통합 검색 재현`,`Reproduce unified search`),d(`Wiki 문서 샘플링`,`Sample wiki documents`),d(`댓글 관계 점검`,`Check comment relationships`),d(`파일 접근 경로 확인`,`Verify file access paths`),d(`긴 이름의 엔터프라이즈 프로젝트 검색 결과 정합성 확인`,`Validate search results for an enterprise project with a long name`)]),v=g(3),b=g(!1),w,T=x(()=>o(m).slice(0,o(v))),D=x(()=>o(v)<o(m).length?`cursor-${o(v)}`:void 0),k=x(()=>JSON.stringify({visibleCount:o(v),loading:o(b),cursor:o(D)??null},null,2));function j(){!o(b)&&o(D)&&(O(b,!0),w=setTimeout(()=>{O(v,Math.min(o(m).length,o(v)+2),!0),O(b,!1)},500))}function N(){w&&clearTimeout(w),O(v,3),O(b,!1)}S(()=>{w&&clearTimeout(w)});var P=ve(),F=p(P),I=p(F),z=p(I);r(z,23,()=>o(T),(e,t)=>`${t}-${e}`,(e,n,r)=>{var i=_e(),a=p(i);R(a,{padding:`compact`,children:(e,i)=>{var a=ge(),c=C(a),u=p(c,!0);t(c);var d=E(c);L(d,{tone:`neutral`,children:(e,t)=>{y();var n=A();h(()=>s(n,`#${o(r)+1}`)),l(e,n)},$$slots:{default:!0}}),h(()=>s(u,o(n))),l(e,a)},$$slots:{default:!0}}),t(i),l(e,i)}),t(z);var V=E(z,2),H=e=>{M(e,{get loading(){return o(b)},get disabled(){return o(b)},onclick:j,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>o(b)?d(`다음 결과를 불러오는 중`,`Loading more results`):d(`결과 더 보기`,`Load more results`)]),l(e,n)},$$slots:{default:!0}})},U=e=>{{let t=e=>{M(e,{size:`sm`,variant:`secondary`,onclick:N,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>d(`예제 초기화`,`Reset example`)]),l(e,n)},$$slots:{default:!0}})},n=x(()=>d(`모든 결과를 불러왔습니다`,`All results loaded`)),r=x(()=>d(`다음 페이지를 가리키는 값이 없으면 추가 요청을 보내지 않습니다.`,`No additional request is sent without a cursor.`));B(e,{get title(){return o(n)},get description(){return o(r)},actions:t,$$slots:{actions:!0}})}};e(V,e=>{o(D)?e(H):e(U,-1)}),t(I),t(F);var W=E(F,2),K=p(W);{let e=x(()=>d(`현재 상태`,`Current state`));G(K,{get code(){return o(k)},language:`json`,get label(){return o(e)},copy:!1})}t(W),t(P),h(e=>_(z,`aria-label`,e),[()=>d(`예제 작업 결과`,`Sample job results`)]),l(i,P),u()}var be=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="example-stack log-panel-recipe svelte-nvrv2l"><div class="example-controls"><!> <!></div> <!></div></div> <div class="example-feedback"><!></div></div>`);function xe(e,r){n(r,!0);let i=f(r,`locale`,3,`ko`);function a(e,t){return i()===`en`?t:e}let c=[`14:32:08 INFO  fixture run-1048 started`,`14:32:09 INFO  loaded 1,240 searchable records`,`14:32:10 WARN  institution alpha returned a delayed snapshot`,`14:32:11 INFO  permission comparison completed`,`14:32:12 ERROR sample document path was not found`,`14:32:13 INFO  fixture run finished with 1 warning and 1 sampled error`],d=g(!1),m=g(!1),_=x(()=>c.filter(e=>!o(m)||e.includes(`ERROR`)).join(`
+`)),v=x(()=>JSON.stringify({wrap:o(d),errorsOnly:o(m),lineCount:o(_).split(`
+`).length},null,2)),b=g(void 0);D(()=>{let e=o(_),t=!0;return j(async()=>{let{highlightCode:e}=await import(`../chunks/BDhWHrEw.js`);return{highlightCode:e}},__vite__mapDeps([0,1]),import.meta.url).then(async({highlightCode:n})=>{let r=await n(e,`bash`);t&&O(b,r,!0)}).catch(()=>{t&&O(b,void 0)}),()=>{t=!1}});var S=be(),C=p(S),w=p(C),T=p(w),k=p(T);I(k,{get checked(){return o(d)},set checked(e){O(d,e,!0)},children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>a(`긴 로그 줄바꿈`,`Wrap long logs`)]),l(e,n)},$$slots:{default:!0}});var N=E(k,2);M(N,{size:`sm`,variant:`secondary`,onclick:()=>O(m,!o(m)),children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>o(m)?a(`전체 로그 보기`,`Show all logs`):a(`오류만 보기`,`Show errors only`)]),l(e,n)},$$slots:{default:!0}}),t(T);var P=E(T,2);{let e=x(()=>o(m)?a(`오류 로그`,`Error log`):a(`실행 로그`,`Execution log`)),t=x(()=>a(`표시한 로그 복사`,`Copy displayed log`)),n=x(()=>a(`로그 복사됨`,`Log copied`)),r=x(()=>a(`로그를 복사할 수 없음`,`Unable to copy log`));G(P,{get code(){return o(_)},language:`bash`,get label(){return o(e)},get wrap(){return o(d)},lineNumbers:!0,get copyLabel(){return o(t)},get copiedLabel(){return o(n)},get copyErrorLabel(){return o(r)},get highlightedLines(){return o(b)}})}t(w),t(C);var F=E(C,2),L=p(F);{let e=x(()=>a(`현재 상태`,`Current state`));G(L,{get code(){return o(v)},language:`json`,get label(){return o(e)},copy:!1})}t(F),t(S),l(e,S),u()}var Se=i(`<li class="svelte-1g2270s"><strong> </strong><span class="svelte-1g2270s"> </span></li>`),Ce=i(`<div class="example-feedback-layout"><div class="example-preview-main"><div class="scroll-top-recipe svelte-1g2270s"><section class="result-scroll svelte-1g2270s" tabindex="-1"><h3> </h3> <ol class="svelte-1g2270s"></ol> <!></section></div></div> <div class="example-feedback"><!></div></div>`);function we(e,i){n(i,!0);let a=f(i,`locale`,3,`ko`);function c(e,t){return a()===`en`?t:e}let d=x(()=>Array.from({length:24},(e,t)=>({id:t+1,title:c(`${t+1}단계 예제 결과`,`Sample result — step ${t+1}`),description:t%5==0?c(`기관별 권한과 매우 긴 문서 경로를 비교한 상세 결과입니다.`,`Detailed result comparing organization permissions and a very long document path.`):c(`로컬 검증 결과를 확인했습니다.`,`The local validation result was verified.`)}))),m,v=g(!1),S=x(()=>JSON.stringify({movedToTop:o(v)},null,2));function C(){let e=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;m.scrollTo({top:0,behavior:e?`auto`:`smooth`}),m.focus({preventScroll:!0}),O(v,!0)}var w=Ce(),T=p(w),D=p(T),k=p(D),j=p(k),N=p(j,!0);t(j);var P=E(j,2);r(P,21,()=>o(d),e=>e.id,(e,n)=>{var r=Se(),i=p(r),a=p(i,!0);t(i);var c=E(i),u=p(c,!0);t(c),t(r),h(()=>{s(a,o(n).title),s(u,o(n).description)}),l(e,r)}),t(P);var F=E(P,2);M(F,{variant:`secondary`,onclick:C,children:(e,t)=>{y();var n=A();h(e=>s(n,e),[()=>c(`결과 처음으로 이동`,`Move to the start of results`)]),l(e,n)},$$slots:{default:!0}}),t(k),b(k,e=>m=e,()=>m),t(D),t(T);var I=E(T,2),L=p(I);{let e=x(()=>c(`현재 상태`,`Current state`));G(L,{get code(){return o(S)},language:`json`,get label(){return o(e)},copy:!1})}t(I),t(w),h((e,t)=>{_(k,`aria-label`,e),s(N,t)},[()=>c(`긴 예제 결과`,`Long sample results`),()=>c(`검증 결과`,`Validation results`)]),l(e,w),u()}var Te={"date-picker":{component:ie,source:Z[`date-picker`]},"date-range-filter":{component:ne,source:Z[`date-range-filter`]},"inline-confirm":{component:le,source:Z[`inline-confirm`]},"job-list-detail":{component:he,source:Z[`job-list-detail`]},"load-more":{component:ye,source:Z[`load-more`]},"log-panel":{component:xe,source:Z[`log-panel`]},"scroll-to-top":{component:we,source:Z[`scroll-to-top`]}},Ee=i(`<meta name="description"/>`),De=i(`<li class="svelte-1jxnhfq"> </li>`),Oe=i(`<section id="example" class="doc-section svelte-1jxnhfq"><h2 class="svelte-1jxnhfq"> </h2> <p class="section-copy"> </p> <!></section> <section id="guidance" class="doc-section docs-prose svelte-1jxnhfq"><h2 class="svelte-1jxnhfq"> </h2> <p class="svelte-1jxnhfq"> </p></section> <section id="composition" class="doc-section docs-prose svelte-1jxnhfq"><h2 class="svelte-1jxnhfq"> </h2> <ul class="svelte-1jxnhfq"></ul></section>`,1);function ke(e,i){n(i,!0);let a=N(),c=x(()=>W.find(e=>e.slug===i.data.slug)),f=x(()=>U(o(c),a.locale)),m=x(()=>Te[i.data.slug]),g=[{id:`example`,ko:`실행 예제`,en:`Live example`},{id:`guidance`,ko:`적용 기준`,en:`Guidance`},{id:`composition`,ko:`구성 방식`,en:`Composition`}],v=x(()=>[{label:a.t(`가이드`,`Guides`)},{label:a.t(`패턴`,`Patterns`),href:`/patterns`},{label:o(f).title,current:!0}]);k(`1jxnhfq`,e=>{var t=Ee();h(()=>_(t,`content`,o(f).description)),d(()=>{w.title=`${o(f).title??``} — Soya UI`}),l(e,t)}),q(e,{get title(){return o(f).title},get description(){return o(f).description},get toc(){return g},get breadcrumbs(){return o(v)},children:(e,n)=>{var i=Oe(),c=C(i),u=p(c),d=p(u,!0);t(u);var g=E(u,2),_=p(g,!0);t(g);var v=E(g,2);ee(v,{get component(){return o(m).component},get source(){return o(m).source},get name(){return o(f).title},get locale(){return a.locale}}),t(c);var y=E(c,2),b=p(y),x=p(b,!0);t(b);var S=E(b,2),w=p(S,!0);t(S),t(y);var T=E(y,2),D=p(T),O=p(D,!0);t(D);var k=E(D,2);r(k,20,()=>o(f).options,e=>e,(e,n)=>{var r=De(),i=p(r,!0);t(r),h(()=>s(i,n)),l(e,r)}),t(k),t(T),h((e,t,n,r)=>{s(d,e),s(_,t),s(x,n),s(w,o(f).useWhen),s(O,r)},[()=>a.t(`실행 예제`,`Live example`),()=>a.t(`동작하는 조합을 확인하고, 선택한 언어의 예제 코드를 복사해 사용하세요.`,`Review the working composition and copy the example code in your selected language.`),()=>a.t(`적용 기준`,`Use when`),()=>a.t(`구성 방식`,`Composition choices`)]),l(e,i)},$$slots:{default:!0}}),u()}export{ke as component,J as universal};
