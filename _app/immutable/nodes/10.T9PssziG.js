@@ -1,0 +1,1 @@
+import{Nt as e}from"../chunks/fs03ZRsb.js";import{l as t}from"../chunks/C4daV0H6.js";import{n}from"../chunks/BoVSm7ye.js";var r=e({load:()=>i});function i(){n(308,`${t}/blocks/`)}export{r as universal};
